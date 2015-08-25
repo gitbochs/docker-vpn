@@ -30,7 +30,7 @@ RUN apt-get -qqy update
 COPY shadowvpn.sh /tmp/shadowvpn.sh
 RUN /bin/bash /tmp/shadowvpn.sh
 RUN rm -rf /tmp/shadowvpn.sh
-COPY server.json /etc/shadowvpn/server.json
+COPY server.conf /etc/shadowvpn/server.conf
 
 # 安装supervisor
 RUN apt-get install -qqy supervisor
