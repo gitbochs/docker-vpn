@@ -28,7 +28,7 @@ RUN apt-get -qqy update
 
 # install shadowvpn
 RUN apt-get -qqy install build-essential automake libtool git
-RUN git clone https://github.com/clowwindy/ShadowVPN.git
+RUN git clone https://github.com/Whatwewant/ShadowVPN.git
 RUN cd ShadowVPN
 RUN git submodule update --init
 RUN ./autogen.sh
