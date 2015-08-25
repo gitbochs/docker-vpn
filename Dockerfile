@@ -27,15 +27,9 @@ RUN apt-get -qqy update
 # RUN apt-get install -qqy openssh-server
 
 # install shadowvpn
-RUN apt-get -qqy install build-essential automake libtool git
-RUN cd /tmp
-RUN git clone https://github.com/whatwewant/ShadowVPN.git
-RUN cd /tmp/ShadowVPN
-RUN git submodule update --init
-RUN ./autogen.sh
-RUN ./configure --enable-static --sysconfdir=/etc
-RUN make && make install
-RUN rm -rf /tmp/ShadowVPN
+COPY shadowvpn.sh /tmp/shadowvpn.sh
+RUN /bin/bash /tmp/shadowvpn.sh
+RUN rm -rf /tmp/shadowvpn.sh
 COPY server.json /etc/shadowvpn/server.json
 
 # 安装supervisor
