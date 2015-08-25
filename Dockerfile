@@ -28,12 +28,14 @@ RUN apt-get -qqy update
 
 # install shadowvpn
 RUN apt-get -qqy install build-essential automake libtool git
-RUN git clone https://github.com/Whatwewant/ShadowVPN.git
-RUN cd ShadowVPN
+RUN cd /tmp
+RUN git clone https://github.com/whatwewant/ShadowVPN.git
+RUN cd /tmp/ShadowVPN
 RUN git submodule update --init
 RUN ./autogen.sh
 RUN ./configure --enable-static --sysconfdir=/etc
 RUN make && make install
+RUN rm -rf /tmp/ShadowVPN
 COPY server.json /etc/shadowvpn/server.json
 
 # 安装supervisor
