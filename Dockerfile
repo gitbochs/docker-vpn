@@ -39,6 +39,7 @@ COPY server.json /etc/shadowvpn/server.json
 # 安装supervisor
 RUN apt-get install -qqy supervisor
 
+
 # 清理
 RUN apt-get autoclean \
     && apt-get autoremove \
